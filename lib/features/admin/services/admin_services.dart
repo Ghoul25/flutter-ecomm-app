@@ -112,11 +112,9 @@ class AdminServices {
           'Content-Type': 'application/json; charset=UTF-8',
           'x-auth-token': userProvider.user.token,
         },
-        body: jsonEncode(
-          {
-            'id': product.id,
-          },
-        ),
+        body: jsonEncode({
+          'id': product.id,
+        }),
       );
 
       httpErrorHandle(
@@ -136,7 +134,7 @@ class AdminServices {
     List<Order> orderList = [];
     try {
       http.Response res =
-          await http.get(Uri.parse('$uri/admin/fetch-orders'), headers: {
+          await http.get(Uri.parse('$uri/admin/get-orders'), headers: {
         'Content-Type': 'application/json; charset=UTF-8',
         'x-auth-token': userProvider.user.token,
       });
@@ -213,11 +211,11 @@ class AdminServices {
           var response = jsonDecode(res.body);
           totalEarning = response['totalEarnings'];
           sales = [
-            Sales('Mobiles', response('mobileEarnings')),
-            Sales('Laptops', response('laptopEarnings')),
-            Sales('Furniture', response('furnitureEarnings')),
-            Sales('Books', response('bookEarnings')),
-            Sales('Clothing', response('clothingEarnings')),
+            Sales('Mobiles', response['mobileEarnings']),
+            Sales('Laptops', response['laptopEarnings']),
+            Sales('Furniture', response['furnitureEarnings']),
+            Sales('Books', response['bookEarnings']),
+            Sales('Clothing', response['clothingEarnings']),
           ];
         },
       );

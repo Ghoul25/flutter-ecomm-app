@@ -68,7 +68,7 @@ class _PostsScreenState extends State<PostsScreen> {
                           child: Text(
                             productData.name,
                             overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
+                            maxLines: 2,
                           ),
                         ),
                         IconButton(
@@ -84,9 +84,9 @@ class _PostsScreenState extends State<PostsScreen> {
               },
             ),
             floatingActionButton: FloatingActionButton(
-              child: const Icon(Icons.add),
               onPressed: navigateToAddProduct,
               tooltip: 'Add a Product',
+              child: const Icon(Icons.add),
             ),
             floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           );

@@ -3,10 +3,9 @@ import 'dart:convert';
 import 'package:ecommerce_app/common/widgets/bottom_bar.dart';
 import 'package:ecommerce_app/constants/error_handling.dart';
 import 'package:ecommerce_app/constants/utils.dart';
-import 'package:ecommerce_app/features/home/screens/home_screen.dart';
 import 'package:ecommerce_app/models/user.dart';
 import 'package:ecommerce_app/providers/user_provider.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,7 +45,7 @@ class AuthService {
         onSuccess: () {
           showSnackBar(
             context,
-            'Account created! Login with same credentials.',
+            'Account created! Please Login.',
           );
         },
       );

@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: Container(
                   height: 42,
-                  margin: const EdgeInsets.only(left: 15),
+                  margin: const EdgeInsets.only(left: 15, right: 20),
                   child: Material(
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
@@ -84,16 +84,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(
-                  Icons.mic,
-                  color: Colors.black,
-                  size: 25,
-                ),
-              )
+              // Container(
+              //   color: Colors.transparent,
+              //   height: 42,
+              //   margin: const EdgeInsets.symmetric(horizontal: 10),
+              //   child: const Icon(
+              //     Icons.mic,
+              //     color: Colors.black,
+              //     size: 25,
+              //   ),
+              // ),
             ],
           ),
         ),

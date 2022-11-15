@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce_app/common/widgets/custom_button.dart';
 import 'package:ecommerce_app/common/widgets/star.dart';
 import 'package:ecommerce_app/constants/global_variables.dart';
+import 'package:ecommerce_app/features/address/screens/address_screen.dart';
 import 'package:ecommerce_app/features/product_details/services/product_details_services.dart';
 import 'package:ecommerce_app/features/search/screens/search_screen.dart';
 import 'package:ecommerce_app/models/product.dart';
@@ -56,8 +57,22 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
     );
   }
 
+  void navigateToAddress(int sum) {
+    Navigator.pushNamed(
+      context,
+      AddressScreen.routeName,
+      arguments: sum.toString(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final user = context.watch<UserProvider>().user;
+    int sum = 0;
+    user.cart
+        .map((e) => sum += e['quantity'] * e['product']['price'] as int)
+        .toList();
+
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(60),
@@ -73,7 +88,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               Expanded(
                 child: Container(
                   height: 42,
-                  margin: const EdgeInsets.only(left: 15),
+                  margin: const EdgeInsets.only(left: 15, right: 50),
                   child: Material(
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
@@ -121,16 +136,16 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(
-                  Icons.mic,
-                  color: Colors.black,
-                  size: 25,
-                ),
-              )
+              // Container(
+              //   color: Colors.transparent,
+              //   height: 42,
+              //   margin: const EdgeInsets.symmetric(horizontal: 10),
+              //   child: const Icon(
+              //     Icons.mic,
+              //     color: Colors.black,
+              //     size: 25,
+              //   ),
+              // )
             ],
           ),
         ),
@@ -143,26 +158,14 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    widget.product.id!,
-                  ),
-                  Stars(
-                    rating: avgRating,
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(
-                vertical: 20,
-                horizontal: 10,
-              ),
-              child: Text(
-                widget.product.name,
-                style: const TextStyle(
-                  fontSize: 15,
-                ),
+                // children: [
+                //   // Text(
+                //   //   widget.product.id!,
+                //   // ),
+                //   // Stars(
+                //   //   rating: avgRating,
+                //   // ),
+                // ],
               ),
             ),
             CarouselSlider(
@@ -182,9 +185,45 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 height: 300,
               ),
             ),
-            Container(
-              color: Colors.black12,
-              height: 2,
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 20,
+                horizontal: 10,
+              ),
+              child: Text(
+                widget.product.name,
+                style: const TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            // CarouselSlider(
+            //   items: widget.product.images.map(
+            //     (i) {
+            //       return Builder(
+            //         builder: (BuildContext context) => Image.network(
+            //           i,
+            //           fit: BoxFit.contain,
+            //           height: 200,
+            //         ),
+            //       );
+            //     },
+            //   ).toList(),
+            //   options: CarouselOptions(
+            //     viewportFraction: 1,
+            //     height: 300,
+            //   ),
+            // ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 5,
+                bottom: 10,
+                left: 10,
+              ),
+              child: Stars(
+                rating: avgRating,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(8),
@@ -198,7 +237,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                   ),
                   children: [
                     TextSpan(
-                      text: '\$${widget.product.price}',
+                      text: '₹${widget.product.price}',
                       style: const TextStyle(
                         fontSize: 25,
                         color: Colors.black,
@@ -221,7 +260,8 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               padding: const EdgeInsets.all(10),
               child: CustomButton(
                 text: 'Buy now',
-                onTap: () {},
+                onTap: () => navigateToAddress(sum),
+                color: const Color.fromARGB(230, 255, 68, 30),
               ),
             ),
             Padding(
@@ -229,7 +269,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
               child: CustomButton(
                 text: 'Add to Cart',
                 onTap: addToCart,
-                color: const Color.fromARGB(255, 254, 211, 19),
+                color: const Color.fromARGB(255, 250, 18, 18),
               ),
             ),
             const SizedBox(height: 10),

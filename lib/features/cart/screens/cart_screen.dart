@@ -52,7 +52,7 @@ class _CartScreenState extends State<CartScreen> {
               Expanded(
                 child: Container(
                   height: 42,
-                  margin: const EdgeInsets.only(left: 15),
+                  margin: const EdgeInsets.only(left: 15, right: 20),
                   child: Material(
                     borderRadius: BorderRadius.circular(7),
                     elevation: 1,
@@ -100,16 +100,16 @@ class _CartScreenState extends State<CartScreen> {
                   ),
                 ),
               ),
-              Container(
-                color: Colors.transparent,
-                height: 42,
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                child: const Icon(
-                  Icons.mic,
-                  color: Colors.black,
-                  size: 25,
-                ),
-              )
+              // Container(
+              //   color: Colors.transparent,
+              //   height: 42,
+              //   margin: const EdgeInsets.symmetric(horizontal: 10),
+              //   child: const Icon(
+              //     Icons.mic,
+              //     color: Colors.black,
+              //     size: 25,
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -122,10 +122,9 @@ class _CartScreenState extends State<CartScreen> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: CustomButton(
-                text: 'Proceed to buy (${user.cart.length} items)',
-                onTap: () => navigateToAddress(sum),
-                color: Colors.lightGreen[500],
-              ),
+                  text: 'Proceed to buy (${user.cart.length} items)',
+                  onTap: () => navigateToAddress(sum),
+                  color: Colors.redAccent),
             ),
             const SizedBox(height: 15),
             Container(

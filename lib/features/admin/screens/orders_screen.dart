@@ -22,7 +22,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
     fetchOrders();
   }
 
-  fetchOrders() async {
+  void fetchOrders() async {
     orders = await adminServices.fetchAllOrders(context);
     setState(() {});
   }

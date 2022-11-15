@@ -46,10 +46,14 @@ class _DailyDealsState extends State<DailyDeals> {
                   children: [
                     Container(
                       alignment: Alignment.topLeft,
-                      padding: const EdgeInsets.only(left: 10, top: 15),
+                      padding:
+                          const EdgeInsets.only(left: 20, top: 15, bottom: 10),
                       child: const Text(
-                        'Daily Deals',
-                        style: TextStyle(fontSize: 20),
+                        'Dealy Deals',
+                        style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     Image.network(
@@ -57,24 +61,25 @@ class _DailyDealsState extends State<DailyDeals> {
                       height: 235,
                       fit: BoxFit.fitHeight,
                     ),
+                    // Container(
+                    //   padding: const EdgeInsets.only(left: 15),
+                    //   alignment: Alignment.center,
+                    //   child: const Text(
+                    //     'Click on the product for more info',
+                    //     style: TextStyle(
+                    //       fontSize: 18,
+                    //     ),
+                    //   ),
+                    // ),
                     Container(
-                      padding: const EdgeInsets.only(left: 15),
-                      alignment: Alignment.topLeft,
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.only(
+                          left: 15, top: 15, right: 40, bottom: 10),
                       child: const Text(
-                        '\$69',
-                        style: TextStyle(
-                          fontSize: 18,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      padding:
-                          const EdgeInsets.only(left: 15, top: 5, right: 40),
-                      child: const Text(
-                        'Meme',
+                        'Click on the product for more info',
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontStyle: FontStyle.italic),
                       ),
                     ),
                     SingleChildScrollView(
@@ -98,9 +103,10 @@ class _DailyDealsState extends State<DailyDeals> {
                         vertical: 15,
                       ).copyWith(left: 15),
                       alignment: Alignment.topLeft,
-                      child: Text(
-                        'More deals',
-                        style: TextStyle(color: Colors.cyan[800]),
+                      child: const Text(
+                        'Deal ends soon!',
+                        style: TextStyle(
+                            color: Colors.red, fontWeight: FontWeight.w500),
                       ),
                     ),
                   ],

@@ -54,7 +54,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: GlobalVariables.greyBackgroundCOlor,
+      backgroundColor: Colors.lightBlue[100],
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -62,16 +62,18 @@ class _AuthScreenState extends State<AuthScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Welcome to MISE',
+                'WELCOME',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 30,
                   fontWeight: FontWeight.w700,
+                  color: Color.fromARGB(230, 255, 32, 32),
                 ),
               ),
+              const SizedBox(height: 5),
               ListTile(
                 tileColor: _auth == Auth.signup
-                    ? GlobalVariables.backgroundColor
-                    : GlobalVariables.greyBackgroundCOlor,
+                    ? Colors.lightBlue[100]
+                    : Colors.lightBlue[100],
                 title: const Text(
                   'Create Account',
                   style: TextStyle(
@@ -79,7 +81,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
                 leading: Radio(
-                  activeColor: GlobalVariables.secondaryColor,
+                  activeColor: Colors.redAccent,
                   value: Auth.signup,
                   groupValue: _auth,
                   onChanged: (Auth? val) {
@@ -120,6 +122,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         CustomButton(
                           text: 'Sign Up',
+                          color: Colors.redAccent,
                           onTap: () {
                             if (_signUpFormKey.currentState!.validate()) {
                               signUpUser();
@@ -132,8 +135,8 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ListTile(
                 tileColor: _auth == Auth.signin
-                    ? GlobalVariables.backgroundColor
-                    : GlobalVariables.greyBackgroundCOlor,
+                    ? Colors.lightBlue[100]
+                    : Colors.lightBlue[100],
                 title: const Text(
                   'Sign-in',
                   style: TextStyle(
@@ -141,7 +144,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ),
                 leading: Radio(
-                  activeColor: GlobalVariables.secondaryColor,
+                  activeColor: Colors.redAccent,
                   value: Auth.signin,
                   groupValue: _auth,
                   onChanged: (Auth? val) {
@@ -175,6 +178,7 @@ class _AuthScreenState extends State<AuthScreen> {
                         ),
                         CustomButton(
                           text: 'Sign In',
+                          color: Colors.redAccent,
                           onTap: () {
                             if (_signInFormKey.currentState!.validate()) {
                               signInUser();
